@@ -23,4 +23,8 @@ void main() {
   test('multiple numbers separated by commas or newlines return their sum', () {
     expect(stringCalculator.add('1\n2,3'), equals(6));
   });
+
+  test('numbers with custom delimiter should return their sum', () {
+    expect(stringCalculator.add('//;\n1;2'), equals(3));
+  });
 }
