@@ -8,9 +8,13 @@ class StringCalculator {
       return int.parse(numbers);
     }
 
-    return numbers
-        .split(',')
-        .map((number) => int.parse(number))
-        .reduce((a, b) => a + b);
+    // Replace teh new line character with a comma and split the string
+    List<String> numberList = numbers.replaceAll('\n', ',').split(',');
+
+    int sum = 0;
+    for (String number in numberList) {
+      sum += int.parse(number);
+    }
+    return sum;
   }
 }
