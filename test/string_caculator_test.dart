@@ -19,4 +19,8 @@ void main() {
   test('multiple numbers separated by commas return their sum', () {
     expect(stringCalculator.add('1,2,3'), equals(6));
   });
+
+  test('multiple numbers separated by commas or newlines return their sum', () {
+    expect(stringCalculator.add('1\n2,3'), equals(6));
+  });
 }
