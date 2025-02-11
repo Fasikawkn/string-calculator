@@ -4,10 +4,6 @@ class StringCalculator {
       return 0;
     }
 
-    if (numbers.length == 1) {
-      return int.parse(numbers);
-    }
-
     // Check for a custom delimiter at the start
     if (numbers.startsWith('//')) {
       final delimiterLineEnd = numbers.indexOf('\n');
@@ -21,9 +17,26 @@ class StringCalculator {
     // Replace teh new line character with a comma and split the string
     List<String> numberList = numbers.replaceAll('\n', ',').split(',');
 
+    // Validate numbers and calculate the sum
     int sum = 0;
+    List<int> negativeNumbers = [];
     for (String number in numberList) {
-      sum += int.parse(number);
+      if (number.isEmpty) continue;
+
+      int num = int.parse(number);
+
+      // Check for negative numbers
+      if (num < 0) {
+        negativeNumbers.add(num);
+      }
+
+      sum += num;
+    }
+
+    // Throw exception if negative numbers are found
+    if (negativeNumbers.isNotEmpty) {
+      throw FormatException(
+          'negative numbers not allowed ${negativeNumbers.join(', ')}');
     }
     return sum;
   }
