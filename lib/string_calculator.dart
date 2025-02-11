@@ -8,10 +8,9 @@ class StringCalculator {
       return int.parse(numbers);
     }
 
-    if (numbers.contains(',')) {
-      return int.parse(numbers[0]) + int.parse(numbers[2]);
-    }
-
-    return 0;
+    return numbers
+        .split(',')
+        .map((number) => int.parse(number))
+        .reduce((a, b) => a + b);
   }
 }
