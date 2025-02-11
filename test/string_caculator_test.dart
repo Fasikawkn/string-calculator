@@ -11,4 +11,8 @@ void main() {
   test('single number returns the same number', () {
     expect(stringCalculator.add('1'), equals(1));
   });
+
+  test('two numbers separated by a comma returns their sum', () {
+    expect(stringCalculator.add('1,5'), equals(6));
+  });
 }
